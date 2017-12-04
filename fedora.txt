@@ -59,6 +59,8 @@ DAEMON_OPTIONS(`Port=smtp, Name=MTA')dnl
 EXPOSED_USER('root')dnl
 dnl EXPOSED_USER('root')dnl
 
+Djsmtp.expressimagingservices.com
+
 FEATURE(always_add_domain)dnl
 FEATURE(`masquerade_entire_domain')dnl
 FEATURE(`masquerade_envelope')dnl
