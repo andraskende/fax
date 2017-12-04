@@ -1,0 +1,12 @@
+[Unit]
+Description=HylaFAX faxgetty for ttyACM14
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=30
+ExecStart=/usr/sbin/faxgetty ttyACM14
+
+[Install]
+WantedBy=multi-user.target

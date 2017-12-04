@@ -1,0 +1,14 @@
+#SENDTO=andras@kende.com
+#FILETYPE=tif
+
+NOTIFY_FAXMASTER=errors
+
+NOW=$(date +"%Y%m%d%H%M%S")
+
+SERVER=$(hostname -s)
+
+cp $FILE /fax/$NOW-$SERVER-$FILENAME.tif
+chmod 777 /fax/$NOW-$SERVER-$FILENAME.tif
+
+#FILE="/var/spool/hylafax/recvq/$NOW-$SERVER-$FILENAME.tif"
+#FILENAME="$NOW-fax6-$FILENAME.tif"

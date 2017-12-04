@@ -1,0 +1,86 @@
+#!/bin/sh
+
+DATETIME="`date +%Y-%m-%d\ %H:%M:%S`"; shift
+ENTRYTYPE="$1"; shift
+COMMID="$1"; shift
+MODEM="$1"; shift
+JOBID="$1"; shift
+JOBTAG="$1"; shift
+USERID="$1"; shift
+LOCALNUMBER="$1"; shift
+TSI="$1"; shift
+PARAMS="$1"; shift
+NPAGES="$1"; shift
+JOBTIME="$1"; shift
+CONNTIME="$1"; shift
+REASON="$1"; shift
+CIDNAME="$1"; shift
+CIDNUMBER="$1"; shift
+CALLID="$1"; shift
+OWNER="$1"; shift
+DCS="$1"; shift
+JOBINFO="$1"; shift
+SERVER=$(hostname -s);
+DATECREATED="`date +%Y-%m-%d`";
+
+echo "INSERT INTO xferfaxlogs SET
+ server = \"$SERVER\",
+ datecreated = \"$DATECREATED\",
+ timestamp = \"$DATETIME\",
+ entrytype = \"$ENTRYTYPE\",
+ commid = \"$COMMID\",
+ modem = \"$MODEM\",
+ jobid = \"$JOBID\",
+ jobtag = \"$JOBTAG\",
+ user = \"$USERID\",
+ localnumber = \"$LOCALNUMBER\",
+ tsi = \"$TSI\",
+ params = \"$PARAMS\",
+ npages = \"$NPAGES\",
+ jobtime = \"$JOBTIME\",
+ conntime = \"$CONNTIME\",
+ reason = \"$REASON\",
+ CIDName = \"$CIDNAME\",
+ CIDNumber = \"$CIDNUMBER\",
+ callid = \"$CALLID\",
+ owner = \"$OWNER\",
+ dcs = \"$DCS\",
+ jobinfo = \"$JOBINFO\"" | mysql -h www.kende.com -u root -p... database
+
+exit 0
+
+#
+# The database table would look something like this:
+#
+#
+# mysql> describe xferfaxlog;
+# +-------------+--------------+------+-----+---------+----------------+
+# | Field       | Type         | Null | Key | Default | Extra          |
+# +-------------+--------------+------+-----+---------+----------------+
+# | id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+# | server      | varchar(20)  | YES  |     | NULL    |                |
+# | timestamp   | datetime     | NO   | MUL |         |                |
+# | entrytype   | varchar(20)  | YES  |     | NULL    |                |
+# | commid      | varchar(20)  | YES  |     | NULL    |                |
+# | modem       | varchar(20)  | YES  |     | NULL    |                |
+# | jobid       | varchar(20)  | YES  |     | NULL    |                |
+# | jobtag      | varchar(100) | YES  |     | NULL    |                |
+# | user        | char(100)    | YES  |     | NULL    |                |
+# | localnumber | varchar(50)  | YES  |     | NULL    |                |
+# | tsi         | varchar(25)  | YES  |     | NULL    |                |
+# | params      | varchar(20)  | YES  |     | NULL    |                |
+# | npages      | int(11)      | YES  |     | NULL    |                |
+# | jobtime     | time         | NO   |     |         |                |
+# | conntime    | time         | NO   |     |         |                |
+# | reason      | char(200)    | YES  |     | NULL    |                |
+# | CIDName     | char(100)    | YES  |     | NULL    |                |
+# | CIDNumber   | char(100)    | YES  |     | NULL    |                |
+# | callid      | char(200)    | YES  |     | NULL    |                |
+# | owner       | char(50)     | YES  |     | NULL    |                |
+# | dcs         | char(100)    | YES  |     | NULL    |                |
+# | jobinfo     | char(200)    | YES  |     | NULL    |                |
+# +-------------+--------------+------+-----+---------+----------------+
+# 21 rows in set (0.01 sec)
+#
+# mysql>
+#

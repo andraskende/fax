@@ -1,0 +1,83 @@
+dnf -y install hylafax mc
+
+chcon -R -t samba_share_t /var/spool/hylafax/recvq/
+chmod -R 777 /var/spool/hylafax/recvq/
+
+firewall-cmd --add-service=samba
+firewall-cmd --add-service=samba --permanent
+
+systemctl enable smb.service
+systemctl enable nmb.service
+
+systemctl restart smb.service
+systemctl restart nmb.service
+
+systemctl enable hylafax-faxq.service
+systemctl enable hylafax-hfaxd.service
+
+systemctl restart hylafax-faxq.service
+systemctl restart hylafax-hfaxd.service
+
+systemctl enable sendmail.service
+systemctl start sendmail.service
+
+faxsetup
+
+faxstat
+
+systemctl start httpd
+systemctl enable httpd
+
+systemctl start faxgetty-ttyACM0.service
+systemctl start faxgetty-ttyACM1.service
+systemctl start faxgetty-ttyACM2.service
+systemctl start faxgetty-ttyACM3.service
+systemctl start faxgetty-ttyACM4.service
+systemctl start faxgetty-ttyACM5.service
+systemctl start faxgetty-ttyACM6.service
+systemctl start faxgetty-ttyACM7.service
+
+systemctl enable faxgetty-ttyACM0.service
+systemctl enable faxgetty-ttyACM1.service
+systemctl enable faxgetty-ttyACM2.service
+systemctl enable faxgetty-ttyACM3.service
+systemctl enable faxgetty-ttyACM4.service
+systemctl enable faxgetty-ttyACM4.service
+systemctl enable faxgetty-ttyACM5.service
+systemctl enable faxgetty-ttyACM6.service
+systemctl enable faxgetty-ttyACM7.service
+
+
+/etc/mail/access - add 
+Connect:192.168.1                       RELAY
+
+/etc/mail/sendmail.mc - changes
+
+DAEMON_OPTIONS(`Port=smtp,Addr=127.0.0.1, Name=MTA')dnl
+DAEMON_OPTIONS(`Port=smtp, Name=MTA')dnl
+
+EXPOSED_USER('root')dnl
+dnl EXPOSED_USER('root')dnl
+
+FEATURE(always_add_domain)dnl
+FEATURE(`masquerade_entire_domain')dnl
+FEATURE(`masquerade_envelope')dnl
+FEATURE(`allmasquerade')dnl
+MASQUERADE_AS(`expressimagingservices.com.')dnl
+MASQUERADE_DOMAIN(`expressimagingservices.com.')dnl
+MASQUERADE_AS(expressimagingservices.com)dnl
+
+/etc/systemd/system/faxgetty-ttyACM0.service
+
+[Unit]
+Description=HylaFAX faxgetty for ttyACM0
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=30
+ExecStart=/usr/sbin/faxgetty ttyACM0
+
+[Install]
+WantedBy=multi-user.target
