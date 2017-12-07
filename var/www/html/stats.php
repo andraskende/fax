@@ -101,7 +101,7 @@ $files = array_slice($files, 0, 1000);
                 $key = strtok($v, ':');
                 $c[$key] = $value;
             }
-            $rowclass = ($c['state'] != 7) ? 'danger' : '';
+            $rowclass = ($c['state'] != 7) ? 'bg-warning' : '';
             $doc = str_replace('0::' , '', $c['!postscript']);
         ?>
         <tr class="<?php echo $rowclass; ?>">
