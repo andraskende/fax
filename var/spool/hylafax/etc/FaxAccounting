@@ -20,12 +20,11 @@ CALLID="$1"; shift
 OWNER="$1"; shift
 DCS="$1"; shift
 JOBINFO="$1"; shift
+
 SERVER=$(hostname -s);
 DATECREATED="`date +%Y-%m-%d`";
 
 echo "INSERT INTO xferfaxlogs SET
- server = \"$SERVER\",
- datecreated = \"$DATECREATED\",
  timestamp = \"$DATETIME\",
  entrytype = \"$ENTRYTYPE\",
  commid = \"$COMMID\",
@@ -45,15 +44,14 @@ echo "INSERT INTO xferfaxlogs SET
  callid = \"$CALLID\",
  owner = \"$OWNER\",
  dcs = \"$DCS\",
- jobinfo = \"$JOBINFO\"" | mysql -h www.kende.com -u root -p... database
+ jobinfo = \"$JOBINFO\",
+ server = \"$SERVER\",
+ datecreated = \"$DATECREATED\"
+ " | mysql -h 192.168.1.11 -u root -p... eis
 
 exit 0
 
-#
-# The database table would look something like this:
-#
-#
-# mysql> describe xferfaxlog;
+# mysql> describe xferfaxlogs;
 # +-------------+--------------+------+-----+---------+----------------+
 # | Field       | Type         | Null | Key | Default | Extra          |
 # +-------------+--------------+------+-----+---------+----------------+
@@ -80,7 +78,32 @@ exit 0
 # | dcs         | char(100)    | YES  |     | NULL    |                |
 # | jobinfo     | char(200)    | YES  |     | NULL    |                |
 # +-------------+--------------+------+-----+---------+----------------+
-# 21 rows in set (0.01 sec)
 #
 # mysql>
-#
+
+# CREATE TABLE `xferfaxlogs` (
+#   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+#   `server` varchar(255) DEFAULT NULL,
+#   `timestamp` datetime DEFAULT NULL,
+#   `entrytype` varchar(255) DEFAULT NULL,
+#   `commid` varchar(255) DEFAULT NULL,
+#   `modem` varchar(255) DEFAULT NULL,
+#   `jobid` varchar(255) DEFAULT NULL,
+#   `jobtag` varchar(255) DEFAULT NULL,
+#   `user` varchar(255) DEFAULT NULL,
+#   `localnumber` varchar(255) DEFAULT NULL,
+#   `tsi` varchar(255) DEFAULT NULL,
+#   `params` varchar(255) DEFAULT NULL,
+#   `npages` int(11) DEFAULT NULL,
+#   `jobtime` time DEFAULT NULL,
+#   `conntime` time DEFAULT NULL
+#   `reason` varchar(255) DEFAULT NULL,
+#   `CIDName` varchar(255) DEFAULT NULL,
+#   `CIDNumber` varchar(255) DEFAULT NULL,
+#   `callid` varchar(255) DEFAULT NULL,
+#   `owner` varchar(255) DEFAULT NULL,
+#   `dcs` varchar(255) DEFAULT NULL,
+#   `jobinfo` varchar(255) DEFAULT NULL,
+#   `datecreated` date DEFAULT NULL,
+#   PRIMARY KEY (`id`)
+# ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
