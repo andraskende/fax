@@ -4,7 +4,7 @@
 
 <h1><?php echo $_SERVER['HTTP_HOST']; ?></h1>
 
-<a href="doneq.php">fax jobs</a>
+<a href="sendq.php">sendq</a> - <a href="sendqall.php">sendqall</a>
 
 <br />
 
@@ -12,7 +12,7 @@
 <?php
 if(!empty($_GET['id'])) {
 $job = (integer) $_GET['id'];
-$file = file_get_contents('/var/spool/hylafax/doneq/q' . $job);
+$file = file_get_contents('/var/spool/hylafax/sendq/q' . $job);
 print_r($file);
 }
 ?>

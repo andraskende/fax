@@ -106,7 +106,7 @@ $files = array_slice($files, 0, 1000);
         ?>
         <tr class="<?php echo $rowclass; ?>">
             <td>
-                <a href="faxstat.php?id=<?php echo $file; ?>"><?php echo $file; ?></a>
+                <a href="sendqdetail.php?id=<?php echo $file; ?>"><?php echo $file; ?></a>
                 <br />
                 <a href="download.php?file=<?php echo $doc; ?>"><?php echo $doc; ?></a>
             </td>
