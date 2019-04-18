@@ -4,7 +4,7 @@
 
 body {
     padding: 10px;
-    background: #CCC;
+    background: #DDD;
 }
 
 iframe {
@@ -17,16 +17,14 @@ iframe {
 
 <body>
 
-<?php for($i = 1; $i <= 4; $i++) : ?>
-
-<iframe height="300" width="100%" src="http://192.168.1.1<?php echo $i;?>/fax.php"></iframe>
-
-<br />
-<br />
-
-<?php endfor; ?>
-
-
+<iframe height="650" width="100%" src="http://192.168.1.11/fax.php"></iframe>
+<br /><br />
+<iframe height="650" width="100%" src="http://192.168.1.12/fax.php"></iframe>
+<br /><br />
+<iframe height="650" width="100%" src="http://192.168.1.13/fax.php"></iframe>
+<br /><br />
+<iframe height="650" width="100%" src="http://192.168.1.14/fax.php"></iframe>
+<br /><br />
 
 </body>
 
