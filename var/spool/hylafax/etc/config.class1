@@ -18,6 +18,7 @@ TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
 RecvDataFormat:         "2-D MMR"
 JobReqBusy:             1200
+UseJobTSI:              yes
 
 ModemType:              Class1
 ModemFlowControl:       rtscts
