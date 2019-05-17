@@ -16,7 +16,7 @@ if(isset($_GET['term'])) {
 
 natcasesort($files);
 $files = array_reverse($files);
-$files = array_slice($files, 0, 1000);
+$files = array_slice($files, 0, 5000);
 
 ?>
 
@@ -27,7 +27,7 @@ $files = array_slice($files, 0, 1000);
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
 
@@ -59,7 +59,7 @@ $files = array_slice($files, 0, 1000);
 
 <div class="content">
 
-    <h1><?php echo $_SERVER['HTTP_HOST']; ?> sendq stats</h1>
+    <h1><?php echo $_SERVER['HTTP_HOST']; ?> sendq stats - <?php echo count($files); ?></h1>
 
     <form method="get" >
         <div class="row">
