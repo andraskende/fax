@@ -20,6 +20,10 @@ $out2 = array();
 exec('uptime', $out2);
 $data['uptime'] = print_r($out2[0], true);
 
+$out3 = array();
+exec('date', $out3);
+$data['date'] = print_r($out3[0], true);
+
 $faxstat = array();
 exec('faxstat', $faxstat);
 
