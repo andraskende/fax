@@ -20,11 +20,12 @@ RecvDataFormat:         "2-D MMR"
 JobReqBusy:             1200
 UseJobTSI:              yes
 
-ModemType:              Class1.0
+ModemType:              Class1
 ModemRate:              57600
 ModemFlowControl:       rtscts
 ModemSetupDTRCmd:       AT&D3
-Class1EnableV34Cmd:     AT+F34=14,1,2
 Class1TMConnectDelay:   400
 Class1HasRHConnectBug:  yes
 Class1JBIGSupport:      no
+
+Class1AdaptRecvCmd:    AT+FAR=1        # reports carrier detection mismatches
