@@ -12,8 +12,10 @@ CREATE TABLE `xferfaxlogs` (
   `tsi` varchar(255) DEFAULT NULL,
   `params` varchar(255) DEFAULT NULL,
   `npages` int(11) DEFAULT NULL,
-  `jobtime` time DEFAULT NULL,
-  `conntime` time DEFAULT NULL,
+  `jobtime` varchar(10) DEFAULT NULL,
+  `conntime` varchar(10) DEFAULT NULL,
+  `jobseconds` int(11) DEFAULT NULL,
+  `connseconds` int(11) DEFAULT NULL,
   `reason` varchar(255) DEFAULT NULL,
   `CIDName` varchar(255) DEFAULT NULL,
   `CIDNumber` varchar(255) DEFAULT NULL,
@@ -22,5 +24,8 @@ CREATE TABLE `xferfaxlogs` (
   `dcs` varchar(255) DEFAULT NULL,
   `jobinfo` varchar(255) DEFAULT NULL,
   `datecreated` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `server` (`server`),
+  KEY `reason` (`reason`),
+  KEY `modem` (`modem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
