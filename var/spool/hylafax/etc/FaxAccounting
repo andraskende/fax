@@ -46,8 +46,10 @@ echo "INSERT INTO xferfaxlogs SET
  dcs = \"$DCS\",
  jobinfo = \"$JOBINFO\",
  server = \"$SERVER\",
+ jobseconds = TIME_TO_SEC(\"$JOBTIME\"),
+ connseconds = TIME_TO_SEC(\"$CONNTIME\"),
  datecreated = \"$DATECREATED\"
- " | mysql -h 192.168.1.11 -u root -p... eis
+ " | mysql -h 192.168.1.33 -u root -p.... eis
 
 exit 0
 
