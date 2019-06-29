@@ -17,7 +17,7 @@ if (!is_dir($faxdirectorydone)) {
 
 foreach ($files as $file) {
 
-    if(preg_match('/^[0-9]{11}-[0-9]/', $file)) {
+    if(preg_match('/^[0-9]{11}-[a-zA-Z0-9]/', $file)) {
 
         echo "\r\n";
         echo $file;
@@ -35,10 +35,11 @@ foreach ($files as $file) {
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            $nonotifications = array(
-                'kende',
+            $nonotifications = [
+                // 'kende',
+                'tritonbg',
                 'dempseyserves',
-            );
+            ];
 
             $notification = '-D';
             foreach ($nonotifications as $nonotification) {
@@ -48,7 +49,7 @@ foreach ($files as $file) {
             }
             // −D Enable notification by electronic mail when the facsimile has been delivered. By default Hyla FAX will notify the submitter only if there is a problem with a job.
 
-            $cmdstring = "sendfax -E -m -n -t 3 -T 12 " . $notification . " -k 'now + 1 day' -i '" . $info . "' -f " . $email . " -d " . $fax . " " . $faxdirectory . "/" . $file;
+            $cmdstring = "sendfax -E -m -n -t 3 -P 63 -T 12 " . $notification . " -k 'now + 1 day' -S 'AP' -i '" . $info . "' -f " . $email . " -d " . $fax . " " . $faxdirectory . "/" . $file;
             echo $cmdstring;
             // die;
 
@@ -65,7 +66,8 @@ foreach ($files as $file) {
             rename($faxdirectory . '/' . $file, $faxdirectorydone . '/' . $file);
 
             $data = date('Y-m-d H:i:s') . '|' . $output . '|' . $file . '|' . $fax . '|' . $workorder. '|' . $email . '|' . $cmdstring . '|' . $output . '|' .$response . "\r\n";
-            file_put_contents($faxdirectory . '/logfile.txt', $data, FILE_APPEND);
+            $logfile = 'accesspoint-fax-log-' . date('Ym') . '.txt';
+            file_put_contents($faxdirectory . '/' .$logfile, $data, FILE_APPEND);
 
         }
 

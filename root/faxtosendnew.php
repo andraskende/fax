@@ -27,12 +27,13 @@ foreach ($files as $value) {
 
                 $response = system($cmd);
 
-                if(!is_dir('/faxtosend/' . $value . '/done')) {
-                    @mkdir('/faxtosend/' . $value . '/dpne');
-                    @chmod('/faxtosend/' . $value . '/done', 0777);
+                if(!is_dir('/faxtosend/submitted/' . $value)) {
+                    @mkdir('/faxtosend/submitted/');
+                    @mkdir('/faxtosend/submitted/' . $value);
+                    @chmod('/faxtosend/submitted/' . $value, 0777);
                 }
 
-                rename('/faxtosend/' . $value . '/' . $file, '/faxtosend/' . $value . '/done/' . $file);
+                rename('/faxtosend/' . $value . '/' . $file, '/faxtosend/submitted/' . $value . '/' . $file);
 
                 $c = explode('-', $value);
                 $company = $c[1];
