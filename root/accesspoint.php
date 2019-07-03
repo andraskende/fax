@@ -1,29 +1,20 @@
 <?php
 
-echo "\r\n";
+$files = glob('/accesspoint/*.{pdf,tif}', GLOB_BRACE);
+// print_r($files);
 
-$faxdirectory = '/accesspoint';
-$faxdirectorydone = '/accesspoint/done';
-
-$files = array_slice(scandir($faxdirectory), 2);
-
-print_r($files);
-
-
-if (!is_dir($faxdirectorydone)) {
-    mkdir($faxdirectorydone, 0777);
-    chmod($faxdirectorydone, 0777);
+if (!is_dir('/accesspoint/done')) {
+    mkdir('/accesspoint/done', 0777);
+    chmod('/accesspoint/done', 0777);
 }
 
 foreach ($files as $file) {
 
-    if(preg_match('/^[0-9]{11}-[a-zA-Z0-9]/', $file)) {
+    $fileName = basename($file);
 
-        echo "\r\n";
-        echo $file;
-        echo "\r\n";
+    if(preg_match('/^[0-9]{11}-[a-zA-Z0-9]/', $fileName)) {
 
-        $tmpfile = pathinfo($file, PATHINFO_FILENAME);
+        $tmpfile = pathinfo($fileName, PATHINFO_FILENAME);
 
         $parts = preg_split("/[-]+/", $tmpfile, 3);
 
@@ -47,9 +38,8 @@ foreach ($files as $file) {
                     $notification = '';
                 }
             }
-            // −D Enable notification by electronic mail when the facsimile has been delivered. By default Hyla FAX will notify the submitter only if there is a problem with a job.
 
-            $cmdstring = "sendfax -E -m -n -t 3 -P 63 -T 12 " . $notification . " -k 'now + 1 day' -S 'AP' -i '" . $info . "' -f " . $email . " -d " . $fax . " " . $faxdirectory . "/" . $file;
+            $cmdstring = "sendfax -E -m -n -t 3 -P 63 -T 12 " . $notification . " -k 'now + 1 day' -S 'AP' -i '" . $info . "' -f " . $email . " -d " . $fax . " " . $file;
             echo $cmdstring;
             // die;
 
@@ -63,16 +53,14 @@ foreach ($files as $file) {
                 $output = '';
             }
 
-            rename($faxdirectory . '/' . $file, $faxdirectorydone . '/' . $file);
+            rename($file, '/accesspoint/done/' . $fileName);
 
             $data = date('Y-m-d H:i:s') . '|' . $output . '|' . $file . '|' . $fax . '|' . $workorder. '|' . $email . '|' . $cmdstring . '|' . $output . '|' .$response . "\r\n";
             $logfile = 'accesspoint-fax-log-' . date('Ym') . '.txt';
-            file_put_contents($faxdirectory . '/' .$logfile, $data, FILE_APPEND);
+            file_put_contents('/accesspoint/' .$logfile, $data, FILE_APPEND);
 
         }
 
     }
 
 }
-
-echo "\r\n";

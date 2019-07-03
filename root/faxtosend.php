@@ -1,59 +1,46 @@
 <?php
 
-$files = [];
-$files1 = scandir('/faxtosend');
+$accounts = [];
+$accounts1 = array_slice(scandir('/faxtosend'), 2);
 
-foreach($files1 as $file) {
-    if(preg_match('/^[0-9]{11}/', $file)) {
-        $files[] = $file;
+foreach($accounts1 as $account1) {
+    if(preg_match('/^[0-9]{11}/', $account1)) {
+        $accounts[] = $account1;
     }
 }
 
-foreach ($files as $value) {
+foreach ($accounts as $account) {
 
-    if ($handle = opendir('/faxtosend/' . $value)) {
-        while (false !== ($file = readdir($handle))) {
-            if ($file != '.' && $file != '..' && $file != 'done') {
+    $files = glob('/faxtosend/' . $account. '/*.{tif,pdf}', GLOB_BRACE);
+    // print_r($files);
 
-                $fax = substr($value, 0, 11);
+    foreach ($files as $file) {
 
-                $fs = filesize('/faxtosend/' . $value . '/' . $file);
+        echo basename($file);
 
-                $info = 'FAXTOSEND/ ' . $file;
+        $fax = substr($account, 0, 11);
 
-                $cmd = "sendfax -E -n -D -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $info . "' -d '" . $fax . "' /faxtosend/" . $value . "/" . $file . "";
+        $fs = filesize($file);
 
-                echo $cmd;
+        $cmd = "sendfax -E -n -D -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
 
-                $response = system($cmd);
+        // echo $cmd;
+        // die;
 
-                if(!is_dir('/faxtosend/' . $value . '/done')) {
-                    @mkdir('/faxtosend/' . $value . '/dpne');
-                    @chmod('/faxtosend/' . $value . '/done', 0777);
-                }
+        $response = system($cmd);
 
-                rename('/faxtosend/' . $value . '/' . $file, '/faxtosend/' . $value . '/done/' . $file);
-
-                $c = explode('-', $value);
-                $company = $c[1];
-
-                $data = date('Y-m-d H:i:s') . '|' . $fax . '|' . $file . '|' . $fs . '|' . $company . '|' . $value . "\r\n";
-                $logfile = 'faxtosend-fax-log-' . date('Ym') . '.txt';
-                file_put_contents('/faxtosend/' .$logfile, $data, FILE_APPEND);
-
-                //@mysql_connect("localhost", "root", "...");
-                //@mysql_select_db("fax");
-                //@mysql_query("INSERT INTO messages SET
-                //filename='".$file."',
-                //faxnumber='".$fax."',
-                //company='".$company."',
-                //filesize='".$fs."',
-                //created='".$datenow."'
-                //");
-
-            }
+        if(!is_dir('/faxtosend/submitted/' . $account)) {
+            @mkdir('/faxtosend/submitted/');
+            @mkdir('/faxtosend/submitted/' . $account);
+            @chmod('/faxtosend/submitted/' . $account, 0777);
         }
-        closedir($handle);
+
+        rename($file, '/faxtosend/submitted/' . $account . '/' . basename($file));
+
+        $data = date('Y-m-d H:i:s') . '|' . $fax . '|' . basename($file) . '|' . $fs . '|' . $account . "\r\n";
+        $logfile = 'faxtosend-fax-log-' . date('Ym') . '.txt';
+        file_put_contents('/faxtosend/' .$logfile, $data, FILE_APPEND);
+
     }
 
 }
