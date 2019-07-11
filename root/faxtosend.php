@@ -12,7 +12,6 @@ foreach($accounts1 as $account1) {
 foreach ($accounts as $account) {
 
     $files = glob('/faxtosend/' . $account. '/*.{tif,pdf}', GLOB_BRACE);
-    // print_r($files);
 
     foreach ($files as $file) {
 
@@ -22,10 +21,8 @@ foreach ($accounts as $account) {
 
         $fs = filesize($file);
 
-        $cmd = "sendfax -E -n -D -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
 
-        // echo $cmd;
-        // die;
+        $cmd = "sendfax -n -D -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
 
         $response = system($cmd);
 
@@ -38,7 +35,7 @@ foreach ($accounts as $account) {
         rename($file, '/faxtosend/submitted/' . $account . '/' . basename($file));
 
         $data = date('Y-m-d H:i:s') . '|' . $fax . '|' . basename($file) . '|' . $fs . '|' . $account . "\r\n";
-        $logfile = 'faxtosend-fax-log-' . date('Ym') . '.txt';
+        $logfile = 'faxtosend-log-' . date('Ym') . '.txt';
         file_put_contents('/faxtosend/' .$logfile, $data, FILE_APPEND);
 
     }

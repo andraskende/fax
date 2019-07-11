@@ -1,37 +1,27 @@
 <?php
 
-$faxdirectory = '/faxrequest';
-$faxdirectorydone = '/faxrequest/done';
-
-$files = array_slice(scandir($faxdirectory), 2);
-
-print_r($files);
-
-if (!is_dir($faxdirectorydone)) {
-    mkdir($faxdirectorydone, 0777);
-    chmod($faxdirectorydone, 0777);
+if (!is_dir('/faxrequest/done/')) {
+    mkdir('/faxrequest/done/', 0777);
+    chmod('/faxrequest/done/', 0777);
 }
+
+$files = glob('/faxrequest/*.{pdf,tif}', GLOB_BRACE);
+shuffle($files);
+$files = array_slice($files, 0, 30);
 
 foreach ($files as $file) {
 
-    if(preg_match('/^[0-9]{11}-/', $file)) {
+    $fileName = basename($file);
 
-        echo "\r\n";
-        echo $file;
-        echo "\r\n";
+    if(preg_match('/^[0-9]{11}-/', $fileName)) {
 
-        $tmpfile = pathinfo($file, PATHINFO_FILENAME);
+        $tmpfile = pathinfo($fileName, PATHINFO_FILENAME);
 
-        $parts = preg_split("/[-]+/", $tmpfile, 3);
+        $parts = preg_split('/[-]+/', $tmpfile, 3);
 
         $fax = $parts[0];
 
-        $email = 'pmeza@expressimagingservices.com';
-
-        $info = 'FAXREQUEST / ' . $tmpfile;
-
-        $cmdstring = "sendfax -E -m -n -D -t 3 -T 12 -k 'now + 1 day' -S 'EIS FAX SERVER' -i '" . $info . "' -f " . $email . " -d " . $fax . " " . $faxdirectory . "/" . $file;
-        echo $cmdstring;
+        $cmdstring = "sendfax -m -n -D -t 3 -T 12 -k 'now + 2 day' -S 'EIS FAX SERVER' -f pmeza@expressimagingservices.com -i '" . $file . "' -d " . $fax . " " . $file;
 
         $response = system($cmdstring);
 
@@ -42,14 +32,12 @@ foreach ($files as $file) {
             $output = '';
         }
 
-        rename($faxdirectory . '/' . $file, $faxdirectorydone . '/' . $file);
+        rename($file, '/faxrequest/done/' . $fileName);
 
-        $data = date('Y-m-d H:i:s') . '|' . $output . '|' . $file . '|' . $fax . '|' . $email . '|' . $cmdstring . '|' . $output . '|' .$response . "\r\n";
-        $logfile = 'faxrequest-fax-log-' . date('Ym') . '.txt';
-        file_put_contents($faxdirectory . '/' .$logfile, $data, FILE_APPEND);
+        $data = date('Y-m-d H:i:s') . '|' . $output . '|' . $fax . '|' . $fileName . '|' . $cmdstring . '|' .$response . "\r\n";
+        $logfile = 'faxrequest-log-' . date('Ym') . '.txt';
+        file_put_contents('/faxrequest/' .$logfile, $data, FILE_APPEND);
 
     }
 
 }
-
-echo "\r\n";
