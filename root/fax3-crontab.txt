@@ -1,0 +1,8 @@
+
+
+*/10 * * * * /usr/bin/php /root/accesspoint.php > /dev/null 2>&1
+*/10 * * * * /usr/bin/php /root/faxrequest.php > /dev/null 2>&1
+*/10 * * * * /usr/bin/php /root/faxtosend.php > /dev/null 2>&1
+*/10 * * * * /usr/bin/php /root/faxweb.php > /dev/null 2>&1
+
+*/10 * * * * /bin/chmod 777 /var/spool/hylafax/docq/* &> /dev/null 2>&1

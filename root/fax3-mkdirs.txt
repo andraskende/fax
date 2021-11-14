@@ -1,0 +1,15 @@
+mkdir /accesspoint
+mkdir /accesspoint/done
+mkdir /faxrequest
+mkdir /faxrequest/done
+mkdir /faxtosend
+mkdir /faxweb
+mkdir /faxweb/done
+
+chmod -R 777 /accesspoint
+chmod -R 777 /accesspoint/done
+chmod -R 777 /faxrequest
+chmod -R 777 /faxrequest/done
+chmod -R 777 /faxtosend
+chmod -R 777 /faxweb
+chmod -R 777 /faxweb/done

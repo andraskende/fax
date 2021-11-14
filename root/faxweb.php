@@ -1,16 +1,18 @@
 <?php
 
-if (!is_dir('/accesspoint/done')) {
-    mkdir('/accesspoint/done', 0777);
-    chmod('/accesspoint/done', 0777);
+if (!is_dir('/faxweb/done')) {
+    mkdir('/faxweb/done', 0777);
+    chmod('/faxweb/done', 0777);
 }
 
-$files = glob('/accesspoint/*');
+$files = glob('/faxweb/*');
 $files =  preg_grep('/\.pdf$|\.tif$/i', $files);
 
 foreach ($files as $file) {
 
     $fileName = basename($file);
+
+    echo $file . "\r\n";
 
     if(preg_match('/^[0-9]{11}-[a-zA-Z0-9]/', $fileName)) {
 
@@ -24,19 +26,9 @@ foreach ($files as $file) {
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            $nonotifications = [
-                'tritonbg',
-                'dempseyserves',
-            ];
-
             $notification = '-D';
-            foreach ($nonotifications as $nonotification) {
-                if (strpos($email, $nonotification) !== false) {
-                    $notification = '';
-                }
-            }
 
-            $cmdstring = "sendfax -m -n -t 5 -T 15 -P 63 " . $notification . " -k 'now + 2 day' -S 'AP' -i '" . $file . "' -f " . $email . " -d " . $fax . " " . $file;
+            $cmdstring = "sendfax -m -n -t 5 -T 15 -P 63 " . $notification . " -k 'now + 2 day' -S 'faxweb' -i '" . $file . "' -f " . $email . " -d " . $fax . " " . $file;
             echo $cmdstring;
 
             $response = system($cmdstring);
@@ -48,11 +40,11 @@ foreach ($files as $file) {
                 $output = '';
             }
 
-            rename($file, '/accesspoint/done/' . $fileName);
+            rename($file, '/faxweb/done/' . $fileName);
 
             $data = date('Y-m-d H:i:s') . '|' . $output . '|' . $file . '|' . $fax . '|' . $workorder. '|' . $email . '|' . $cmdstring . '|' . $output . '|' .$response . "\r\n";
-            $logfile = 'accesspoint-log-' . date('Ym') . '.txt';
-            file_put_contents('/accesspoint/' . $logfile, $data, FILE_APPEND);
+            $logfile = 'faxweb-log-' . date('Ym') . '.txt';
+            file_put_contents('/faxweb/' . $logfile, $data, FILE_APPEND);
 
         }
 

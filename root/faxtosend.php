@@ -11,7 +11,8 @@ foreach($accounts1 as $account1) {
 
 foreach ($accounts as $account) {
 
-    $files = glob('/faxtosend/' . $account. '/*.{tif,pdf}', GLOB_BRACE);
+    $files = glob('/faxtosend/' . $account . '/*');
+    $files =  preg_grep('/\.pdf$|\.tif$/i', $files);
 
     foreach ($files as $file) {
 
@@ -22,7 +23,7 @@ foreach ($accounts as $account) {
         $fs = filesize($file);
 
 
-        $cmd = "sendfax -n -D -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
+        $cmd = "sendfax -n -D -t 5 -T 15 -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
 
         $response = system($cmd);
 

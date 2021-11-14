@@ -83,3 +83,14 @@ ExecStart=/usr/sbin/faxgetty ttyACM0
 
 [Install]
 WantedBy=multi-user.target
+
+
+PHP
+
+/etc/php-fpm.d/www.conf
+	user = root
+	group = root
+
+/usr/lib/systemd/system/php-fpm.service
+	ExecStart=/usr/sbin/php-fpm --nodaemonize --allow-to-run-as-root
+

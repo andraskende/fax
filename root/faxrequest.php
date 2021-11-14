@@ -5,9 +5,8 @@ if (!is_dir('/faxrequest/done/')) {
     chmod('/faxrequest/done/', 0777);
 }
 
-$files = glob('/faxrequest/*.{pdf,tif}', GLOB_BRACE);
-shuffle($files);
-$files = array_slice($files, 0, 30);
+$files = glob('/faxrequest/*');
+$files =  preg_grep('/\.pdf$|\.tif$/i', $files);
 
 foreach ($files as $file) {
 
@@ -21,7 +20,7 @@ foreach ($files as $file) {
 
         $fax = $parts[0];
 
-        $cmdstring = "sendfax -m -n -D -t 3 -T 12 -k 'now + 2 day' -S 'EIS FAX SERVER' -f pmeza@expressimagingservices.com -i '" . $file . "' -d " . $fax . " " . $file;
+        $cmdstring = "sendfax -m -n -D -t 5 -T 15 -k 'now + 2 day' -S 'EIS FAX SERVER' -f faxconfirmation@expressimagingservices.com -i '" . $file . "' -d " . $fax . " " . $file;
 
         $response = system($cmdstring);
 

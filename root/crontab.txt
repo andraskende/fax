@@ -1,5 +1,0 @@
-
-*/5 * * * * /usr/bin/php /root/faxtosend.php > /dev/null 2>&1
-*/5 * * * * /usr/bin/php /root/accesspoint.php > /dev/null 2>&1
-
-*/5 * * * * /bin/chmod 777 /var/spool/hylafax/docq/* &> /dev/null 2>&1
