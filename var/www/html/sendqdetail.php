@@ -10,10 +10,10 @@
 
 <pre>
 <?php
-if(!empty($_GET['id'])) {
-$job = (integer) $_GET['id'];
-$file = file_get_contents('/var/spool/hylafax/sendq/q' . $job);
-print_r($file);
+if (!empty($_GET['id'])) {
+    $job = (int) $_GET['id'];
+    $file = file_get_contents('/var/spool/hylafax/sendq/q' . $job);
+    print_r($file);
 }
 ?>
 </pre>

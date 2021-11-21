@@ -27,7 +27,7 @@ $files = array_slice($files, 0, 5000);
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
 
@@ -64,11 +64,11 @@ $files = array_slice($files, 0, 5000);
     <form method="get" >
         <div class="row">
             <div class="col-3">
-                <input name="term" class="form-control" value="<?php echo $term; ?>">
+                <input name="term" class="form-control form-control-sm" value="<?php echo $term; ?>">
             </div>
             <div class="col-3">
-                <button class="btn btn-primary">Search</button>
-                <a href="sendq.php" class="btn btn-secondary">Reset</a>
+                <button class="btn btn-sm btn-primary">Search</button>
+                <a href="sendq.php" class="btn btn-sm btn-secondary">Reset</a>
             </div>
         </div>
     </form>
