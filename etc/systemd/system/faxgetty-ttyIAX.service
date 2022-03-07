@@ -1,5 +1,5 @@
 [Unit]
-Description=HylaFAX faxgetty for ttyIAX
+Description=HylaFAX faxgetty for ttyIAX.
 
 [Service]
 User=root
