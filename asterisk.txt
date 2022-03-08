@@ -1,0 +1,3 @@
+cd /root/iaxmodem-1.3.3/
+sudo ./build static
+sudo cp /root/iaxmodem-1.3.3/iaxmodem /usr/local/sbin/
