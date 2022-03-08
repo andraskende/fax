@@ -1,4 +1,4 @@
-device /dev/ttyIAX
+device /dev/ttyIAX2
 owner uucp:uucp
 mode 660
 port 4572
