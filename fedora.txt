@@ -69,6 +69,10 @@ MASQUERADE_AS(`expressimagingservices.com.')dnl
 MASQUERADE_DOMAIN(`expressimagingservices.com.')dnl
 MASQUERADE_AS(expressimagingservices.com)dnl
 
+echo "define(\`SMART_HOST', \`[192.168.1.33]')dnl" >> /etc/mail/sendmail.mc
+cd /etc/mail/;
+./make;
+
 /etc/systemd/system/faxgetty-ttyACM0.service
 
 [Unit]
