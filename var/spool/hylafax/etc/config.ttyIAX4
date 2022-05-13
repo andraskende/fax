@@ -6,8 +6,8 @@ InternationalPrefix:	011
 DialStringRules:	    etc/dialrules
 ServerTracing:		    0xFFF
 SessionTracing:		    0xFFF
-RecvFileMode:		    0600
-LogFileMode:		    0600
+RecvFileMode:           0777
+LogFileMode:            0777
 DeviceMode:		        0600
 RingsBeforeAnswer:	    1
 SpeakerVolume:		    off
