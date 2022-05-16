@@ -1,0 +1,12 @@
+[Unit]
+Description=IAXModem for asterisk <-> Hylafax gateway
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=30
+ExecStart=/usr/local/sbin/iaxmodem ttyIAX20
+
+[Install]
+WantedBy=multi-user.target
