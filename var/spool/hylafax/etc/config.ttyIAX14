@@ -12,7 +12,7 @@ DeviceMode:             0600
 RingsBeforeAnswer:      1
 SpeakerVolume:          off
 GettyArgs:              "-h %l dx_%s"
-LocalIdentifier:        "EIS t38"
+LocalIdentifier:        "EIS t38fax"
 TagLineFont:            etc/LiberationSans-25.pcf
 TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
