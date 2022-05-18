@@ -22,5 +22,15 @@ UseJobTSI:              yes
 
 ModemType:              Class1
 
+ModemResetDelay:        0
+ModemSoftResetCmdDelay: 0
+ModemResetCmds:		    AT+VCID=1
+
 Class1AdaptRecvCmd:     AT+FAR=1
 Class1TMConnectDelay:   400
+PagerTTYParity:         none
+
+CallIDPattern:          "NMBR="
+CallIDPattern:          "NAME="
+CallIDPattern:		    "ANID="
+CallIDPattern:          "NDID="
