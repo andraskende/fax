@@ -9,7 +9,7 @@ SessionTracing:         0xFFF
 RecvFileMode:           0777
 LogFileMode:            0777
 DeviceMode:             0600
-RingsBeforeAnswer:      1
+RingsBeforeAnswer:      2
 SpeakerVolume:          off
 GettyArgs:              "-h %l dx_%s"
 LocalIdentifier:        "EIS t38fax"
