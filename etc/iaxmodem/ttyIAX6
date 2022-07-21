@@ -1,0 +1,11 @@
+device /dev/ttyIAX6
+owner uucp:uucp
+mode 660
+port 4566
+refresh 60
+server 127.0.0.1
+peername ttyIAX6
+secret password
+cidname EIS
+cidnumber 4246250123
+codec slinear

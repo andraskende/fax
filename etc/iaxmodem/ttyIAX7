@@ -1,0 +1,11 @@
+device /dev/ttyIAX7
+owner uucp:uucp
+mode 660
+port 4567
+refresh 60
+server 127.0.0.1
+peername ttyIAX7
+secret password
+cidname EIS
+cidnumber 4246250123
+codec slinear
