@@ -22,6 +22,8 @@ UseJobTSI:              yes
 
 ModemType:              Class1
 
+ModemResetCmds:         AT+VCID=1
+
 CallIDPattern:          "NDID="
 CallIDLabel:            "DID"
 CallIDDisplay:          yes
