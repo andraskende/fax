@@ -21,6 +21,7 @@ JobReqBusy:             1200
 UseJobTSI:              yes
 
 ModemType:              Class1
+Class1JBIGSupport:      no
 
 ModemResetCmds:         AT+VCID=1
 
