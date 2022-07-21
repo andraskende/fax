@@ -21,3 +21,13 @@ JobReqBusy:             1200
 UseJobTSI:              yes
 
 ModemType:              Class1
+
+CallIDPattern:          "NDID="
+CallIDLabel:            "DID"
+CallIDDisplay:          yes
+CallIDPattern:          "NMBR="
+CallIDLabel:            "CID"
+CallIDDisplay:          yes
+CallIDRecord:           no
+CallIDPattern:          "NAME="
+CallIDLabel:            "CID"
