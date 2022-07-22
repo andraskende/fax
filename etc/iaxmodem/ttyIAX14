@@ -1,7 +1,7 @@
 device /dev/ttyIAX14
 owner uucp:uucp
 mode 660
-port 4574
+port 4564
 refresh 60
 server 127.0.0.1
 peername ttyIAX14

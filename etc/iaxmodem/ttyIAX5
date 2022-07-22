@@ -1,7 +1,7 @@
 device /dev/ttyIAX5
 owner uucp:uucp
 mode 660
-port 4565
+port 4555
 refresh 60
 server 127.0.0.1
 peername ttyIAX5
