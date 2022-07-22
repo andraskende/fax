@@ -1,11 +1,11 @@
-device /dev/ttyIAX8
+device /dev/ttyIAX10
 owner uucp:uucp
 mode 660
-port 4568
+port 4570
 refresh 60
 server 127.0.0.1
-peername ttyIAX8
+peername ttyIAX10
 secret password
 cidname EIS
-cidnumber 4244500150
+cidnumber 4246250123
 codec slinear
