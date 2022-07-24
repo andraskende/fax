@@ -1,14 +1,14 @@
-#SENDTO=andras@kende.com
+#SENDTO=andras@gmail.com
 #FILETYPE=tif
 
 NOTIFY_FAXMASTER=errors
 
-NOW=$(date +"%Y%m%d%H%M%S")
+NOW=$(date +"%Y%m%d-%H%M")
 
 SERVER=$(hostname -s)
 
 cp $FILE /fax/$NOW-$SERVER-$FILENAME.tif
 chmod 777 /fax/$NOW-$SERVER-$FILENAME.tif
 
-#FILE="/var/spool/hylafax/recvq/$NOW-$SERVER-$FILENAME.tif"
-#FILENAME="$NOW-fax6-$FILENAME.tif"
+#cp $FILE /fax/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
+#chmod 777 /fax/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
