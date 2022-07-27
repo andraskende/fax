@@ -4,7 +4,7 @@ FAXNumber:              +1.800.347.4119
 LongDistancePrefix:     1
 InternationalPrefix:    011
 DialStringRules:        etc/dialrules
-ServerTracing:          1
+ServerTracing:          0xFFF
 SessionTracing:         0xFFF
 RecvFileMode:           0777
 LogFileMode:            0777
@@ -16,7 +16,7 @@ LocalIdentifier:        "EIS"
 TagLineFont:            etc/LiberationSans-25.pcf
 TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
-RecvDataFormat:         "2-D MMR"
+#RecvDataFormat:         "2-D MMR"
 JobReqBusy:             1200
 UseJobTSI:              yes
 
@@ -27,7 +27,6 @@ Class1TMConnectDelay:   400
 Class1HasRHConnectBug:  yes
 Class1JBIGSupport:      no
 Class1ECMSupport:       no
-ModemSoftRTFCC:         no
 
 ModemResetCmds:         AT+VCID=1
 
