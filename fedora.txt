@@ -48,7 +48,7 @@ systemctl enable faxgetty-ttyACM6.service
 systemctl enable faxgetty-ttyACM7.service
 
 
-/etc/mail/access - add 
+/etc/mail/access - add
 Connect:192.168.1                       RELAY
 
 /etc/mail/sendmail.mc - changes
@@ -98,3 +98,11 @@ PHP
 /usr/lib/systemd/system/php-fpm.service
 	ExecStart=/usr/sbin/php-fpm --nodaemonize --allow-to-run-as-root
 
+
+
+ModemReadyState:		D
+
+faxstate -s up ttyACM0
+faxstate -s up -n ttyACM0
+faxstate -s down ttyACM0
+faxstate -s down -n ttyACM0
