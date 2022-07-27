@@ -106,3 +106,6 @@ faxstate -s up ttyACM0
 faxstate -s up -n ttyACM0
 faxstate -s down ttyACM0
 faxstate -s down -n ttyACM0
+
+
+ssh-keygen -R "hostname"
