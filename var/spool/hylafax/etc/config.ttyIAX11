@@ -16,7 +16,7 @@ LocalIdentifier:        "EIS t38fax"
 TagLineFont:            etc/LiberationSans-25.pcf
 TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
-RecvDataFormat:         "2-D MMR"
+#RecvDataFormat:         "2-D MMR"
 JobReqBusy:             1200
 UseJobTSI:              yes
 
