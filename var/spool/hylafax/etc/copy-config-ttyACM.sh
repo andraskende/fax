@@ -7,13 +7,7 @@ cp config.ttyACM0 config.ttyACM14
 cp config.ttyACM0 config.ttyACM15
 cp config.ttyACM0 config.ttyACM16
 cp config.ttyACM0 config.ttyACM17
-cp config.ttyACM0 config.ttyACM18
-cp config.ttyACM0 config.ttyACM19
 cp config.ttyACM0 config.ttyACM2
-cp config.ttyACM0 config.ttyACM20
-cp config.ttyACM0 config.ttyACM21
-cp config.ttyACM0 config.ttyACM22
-cp config.ttyACM0 config.ttyACM23
 cp config.ttyACM0 config.ttyACM3
 cp config.ttyACM0 config.ttyACM4
 cp config.ttyACM0 config.ttyACM5

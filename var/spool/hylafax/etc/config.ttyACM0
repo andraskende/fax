@@ -9,7 +9,7 @@ SessionTracing:         0xFFF
 RecvFileMode:           0777
 LogFileMode:            0777
 DeviceMode:             0600
-RingsBeforeAnswer:      2
+RingsBeforeAnswer:      3
 SpeakerVolume:          off
 GettyArgs:              "-h %l dx_%s"
 LocalIdentifier:        "EIS"
@@ -26,6 +26,7 @@ ModemSetupDTRCmd:       AT&D3
 Class1TMConnectDelay:   400
 Class1HasRHConnectBug:  yes
 Class1JBIGSupport:      no
+Class1ECMSupport:       no
 
 ModemResetCmds:         AT+VCID=1
 
