@@ -1,6 +1,6 @@
 CountryCode:            1
 AreaCode:               424
-FAXNumber:              +1.424.625.0123
+FAXNumber:              +1.424.450.0150
 LongDistancePrefix:     1
 InternationalPrefix:    011
 DialStringRules:        etc/dialrules
@@ -22,6 +22,7 @@ UseJobTSI:              yes
 
 ModemType:              Class1
 Class1JBIGSupport:      no
+Class1ECMSupport:       no
 
 ModemResetCmds:         AT+VCID=1
 

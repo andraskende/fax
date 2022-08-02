@@ -22,6 +22,7 @@ UseJobTSI:              yes
 
 ModemType:              Class1
 Class1JBIGSupport:      no
+Class1ECMSupport:       no
 
 ModemResetCmds:         AT+VCID=1
 
