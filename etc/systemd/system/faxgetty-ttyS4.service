@@ -1,12 +1,12 @@
 [Unit]
-Description=HylaFAX faxgetty for ttyS5
+Description=HylaFAX faxgetty for ttyS4
 
 [Service]
 User=root
 Group=root
 Restart=always
 RestartSec=30
-ExecStart=/usr/sbin/faxgetty ttyS5
+ExecStart=/usr/sbin/faxgetty ttyS4
 
 [Install]
 WantedBy=multi-user.target

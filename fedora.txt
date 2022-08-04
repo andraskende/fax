@@ -48,6 +48,12 @@ systemctl enable faxgetty-ttyACM6.service
 systemctl enable faxgetty-ttyACM7.service
 
 
+systemctl enable faxgetty-ttyS2.service
+systemctl enable faxgetty-ttyS3.service
+systemctl enable faxgetty-ttyS4.service
+systemctl enable faxgetty-ttyS5.service
+
+
 /etc/mail/access - add
 Connect:192.168.1                       RELAY
 
