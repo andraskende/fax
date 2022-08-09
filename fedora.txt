@@ -114,4 +114,8 @@ faxstate -s down ttyACM0
 faxstate -s down -n ttyACM0
 
 
+dmesg | grep tty
+
 ssh-keygen -R "hostname"
+
+
