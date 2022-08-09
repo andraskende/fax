@@ -1,0 +1,12 @@
+[Unit]
+Description=HylaFAX faxgetty for ttyS6
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=30
+ExecStart=/usr/sbin/faxgetty ttyS6
+
+[Install]
+WantedBy=multi-user.target
