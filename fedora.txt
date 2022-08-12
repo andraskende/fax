@@ -105,6 +105,7 @@ PHP
 	ExecStart=/usr/sbin/php-fpm --nodaemonize --allow-to-run-as-root
 
 
+sudo systemctl start php-fpm
 
 ModemReadyState:		D
 
