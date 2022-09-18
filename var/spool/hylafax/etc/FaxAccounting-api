@@ -1,0 +1,141 @@
+#!/bin/sh
+
+DATETIME="`date +%Y-%m-%d\ %H:%M:%S`"; shift
+ENTRYTYPE="$1"; shift
+COMMID="$1"; shift
+MODEM="$1"; shift
+JOBID="$1"; shift
+JOBTAG="$1"; shift
+USERID="$1"; shift
+LOCALNUMBER="$1"; shift
+TSI="$1"; shift
+PARAMS="$1"; shift
+NPAGES="$1"; shift
+JOBTIME="$1"; shift
+CONNTIME="$1"; shift
+REASON="$1"; shift
+CIDNAME="$1"; shift
+CIDNUMBER="$1"; shift
+CALLID="$1"; shift
+OWNER="$1"; shift
+DCS="$1"; shift
+JOBINFO="$1"; shift
+
+SERVER=$(hostname -s);
+DATECREATED="`date +%Y-%m-%d`";
+
+# echo "INSERT INTO xferfaxlogs SET
+#  timestamp = \"$DATETIME\",
+#  entrytype = \"$ENTRYTYPE\",
+#  commid = \"$COMMID\",
+#  modem = \"$MODEM\",
+#  jobid = \"$JOBID\",
+#  jobtag = \"$JOBTAG\",
+#  user = \"$USERID\",
+#  localnumber = \"$LOCALNUMBER\",
+#  tsi = \"$TSI\",
+#  params = \"$PARAMS\",
+#  npages = \"$NPAGES\",
+#  jobtime = \"$JOBTIME\",
+#  conntime = \"$CONNTIME\",
+#  reason = \"$REASON\",
+#  CIDName = \"$CIDNAME\",
+#  CIDNumber = \"$CIDNUMBER\",
+#  callid = \"$CALLID\",
+#  owner = \"$OWNER\",
+#  dcs = \"$DCS\",
+#  jobinfo = \"$JOBINFO\",
+#  server = \"$SERVER\",
+#  jobseconds = TIME_TO_SEC(\"$JOBTIME\"),
+#  connseconds = TIME_TO_SEC(\"$CONNTIME\"),
+#  datecreated = \"$DATECREATED\"
+#  " | mysql -h 192.168.1.33 -u root -pexpress9 eis
+
+SQL="INSERT INTO xferfaxlogs SET
+ timestamp = \"$DATETIME\",
+ entrytype = \"$ENTRYTYPE\",
+ commid = \"$COMMID\",
+ modem = \"$MODEM\",
+ jobid = \"$JOBID\",
+ jobtag = \"$JOBTAG\",
+ user = \"$USERID\",
+ localnumber = \"$LOCALNUMBER\",
+ tsi = \"$TSI\",
+ params = \"$PARAMS\",
+ npages = \"$NPAGES\",
+ jobtime = \"$JOBTIME\",
+ conntime = \"$CONNTIME\",
+ reason = \"$REASON\",
+ CIDName = \"$CIDNAME\",
+ CIDNumber = \"$CIDNUMBER\",
+ callid = \"$CALLID\",
+ owner = \"$OWNER\",
+ dcs = \"$DCS\",
+ jobinfo = \"$JOBINFO\",
+ server = \"$SERVER\",
+ jobseconds = TIME_TO_SEC(\"$JOBTIME\"),
+ connseconds = TIME_TO_SEC(\"$CONNTIME\"),
+ datecreated = \"$DATECREATED\";";
+
+# echo $SQL;
+
+curl -X POST -d "$SQL" https://www.eiscallcenter.com/eis/?.php
+
+exit 0
+
+# mysql> describe xferfaxlogs;
+# +-------------+--------------+------+-----+---------+----------------+
+# | Field       | Type         | Null | Key | Default | Extra          |
+# +-------------+--------------+------+-----+---------+----------------+
+# | id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+# | server      | varchar(20)  | YES  |     | NULL    |                |
+# | timestamp   | datetime     | NO   | MUL |         |                |
+# | entrytype   | varchar(20)  | YES  |     | NULL    |                |
+# | commid      | varchar(20)  | YES  |     | NULL    |                |
+# | modem       | varchar(20)  | YES  |     | NULL    |                |
+# | jobid       | varchar(20)  | YES  |     | NULL    |                |
+# | jobtag      | varchar(100) | YES  |     | NULL    |                |
+# | user        | char(100)    | YES  |     | NULL    |                |
+# | localnumber | varchar(50)  | YES  |     | NULL    |                |
+# | tsi         | varchar(25)  | YES  |     | NULL    |                |
+# | params      | varchar(20)  | YES  |     | NULL    |                |
+# | npages      | int(11)      | YES  |     | NULL    |                |
+# | jobtime     | time         | NO   |     |         |                |
+# | conntime    | time         | NO   |     |         |                |
+# | reason      | char(200)    | YES  |     | NULL    |                |
+# | CIDName     | char(100)    | YES  |     | NULL    |                |
+# | CIDNumber   | char(100)    | YES  |     | NULL    |                |
+# | callid      | char(200)    | YES  |     | NULL    |                |
+# | owner       | char(50)     | YES  |     | NULL    |                |
+# | dcs         | char(100)    | YES  |     | NULL    |                |
+# | jobinfo     | char(200)    | YES  |     | NULL    |                |
+# +-------------+--------------+------+-----+---------+----------------+
+#
+# mysql>
+
+# CREATE TABLE `xferfaxlogs` (
+#   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+#   `server` varchar(255) DEFAULT NULL,
+#   `timestamp` datetime DEFAULT NULL,
+#   `entrytype` varchar(255) DEFAULT NULL,
+#   `commid` varchar(255) DEFAULT NULL,
+#   `modem` varchar(255) DEFAULT NULL,
+#   `jobid` varchar(255) DEFAULT NULL,
+#   `jobtag` varchar(255) DEFAULT NULL,
+#   `user` varchar(255) DEFAULT NULL,
+#   `localnumber` varchar(255) DEFAULT NULL,
+#   `tsi` varchar(255) DEFAULT NULL,
+#   `params` varchar(255) DEFAULT NULL,
+#   `npages` int(11) DEFAULT NULL,
+#   `jobtime` time DEFAULT NULL,
+#   `conntime` time DEFAULT NULL
+#   `reason` varchar(255) DEFAULT NULL,
+#   `CIDName` varchar(255) DEFAULT NULL,
+#   `CIDNumber` varchar(255) DEFAULT NULL,
+#   `callid` varchar(255) DEFAULT NULL,
+#   `owner` varchar(255) DEFAULT NULL,
+#   `dcs` varchar(255) DEFAULT NULL,
+#   `jobinfo` varchar(255) DEFAULT NULL,
+#   `datecreated` date DEFAULT NULL,
+#   PRIMARY KEY (`id`)
+# ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
