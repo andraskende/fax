@@ -1,0 +1,12 @@
+[Unit]
+Description=HylaFAX faxgetty for ttyS18
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=30
+ExecStart=/usr/sbin/faxgetty ttyS18
+
+[Install]
+WantedBy=multi-user.target

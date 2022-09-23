@@ -8,3 +8,11 @@ cp config.ttyS2 config.ttyS9
 cp config.ttyS2 config.ttyS10
 cp config.ttyS2 config.ttyS11
 cp config.ttyS2 config.ttyS12
+cp config.ttyS2 config.ttyS13
+cp config.ttyS2 config.ttyS14
+cp config.ttyS2 config.ttyS15
+cp config.ttyS2 config.ttyS16
+cp config.ttyS2 config.ttyS17
+cp config.ttyS2 config.ttyS18
+cp config.ttyS2 config.ttyS18
+cp config.ttyS2 config.ttyS20
