@@ -14,5 +14,5 @@ cp config.ttyS2 config.ttyS15
 cp config.ttyS2 config.ttyS16
 cp config.ttyS2 config.ttyS17
 cp config.ttyS2 config.ttyS18
-cp config.ttyS2 config.ttyS18
+cp config.ttyS2 config.ttyS19
 cp config.ttyS2 config.ttyS20
