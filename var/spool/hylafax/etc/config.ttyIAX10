@@ -1,6 +1,6 @@
 CountryCode:            1
-AreaCode:               424
-FAXNumber:              +1.424.625.0123
+AreaCode:               800
+FAXNumber:              +1.800.347.4119
 LongDistancePrefix:     1
 InternationalPrefix:    011
 DialStringRules:        etc/dialrules
@@ -12,12 +12,14 @@ DeviceMode:             0600
 RingsBeforeAnswer:      3
 SpeakerVolume:          off
 GettyArgs:              "-h %l dx_%s"
-LocalIdentifier:        "EIS t38fax"
+LocalIdentifier:        "EIS"
 TagLineFont:            etc/LiberationSans-25.pcf
 TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
 #RecvDataFormat:         "2-D MMR"
-JobReqBusy:             1200
+JobReqBusy:             1800
+MaxBatchJobs:           1
+MaxConcurrentCalls:     1
 UseJobTSI:              yes
 
 ModemType:              Class1
