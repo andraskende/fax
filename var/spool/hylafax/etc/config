@@ -7,3 +7,4 @@ DialStringRules:        "etc/dialrules"
 ServerTracing:          0xFFF
 MaxBatchJobs:           1
 MaxConcurrentCalls:     1
+ModemRate:              9600
