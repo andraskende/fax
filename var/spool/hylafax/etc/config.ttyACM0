@@ -17,7 +17,9 @@ TagLineFont:            etc/LiberationSans-25.pcf
 TagLineFormat:          "From %%l|%c|Page %%P of %%T"
 MaxRecvPages:           1000
 #RecvDataFormat:         "2-D MMR"
-JobReqBusy:             1200
+JobReqBusy:             1800
+MaxBatchJobs:           1
+MaxConcurrentCalls:     1
 UseJobTSI:              yes
 
 ModemType:              Class1
