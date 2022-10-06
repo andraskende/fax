@@ -20,7 +20,7 @@ foreach ($files as $file) {
 
         $fax = $parts[0];
 
-        $cmdstring = "sendfax -m -n -D -t 5 -T 15 -k 'now + 2 day' -S 'EIS FAX SERVER' -f faxconfirmation@expressimagingservices.com -i '" . $file . "' -d " . $fax . " " . $file;
+        $cmdstring = "sendfax -m -n -D -B 9600 -k 'now + 2 day' -S 'EIS FAX SERVER' -f faxconfirmation@expressimagingservices.com -i '" . $file . "' -d " . $fax . " " . $file;
 
         $response = system($cmdstring);
 

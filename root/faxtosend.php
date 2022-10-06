@@ -22,15 +22,12 @@ foreach ($accounts as $account) {
 
         $fs = filesize($file);
 
-
-        $cmd = "sendfax -n -D -t 5 -T 15 -k 'now +2 days' -f amoreno@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
+        $cmd = "sendfax -n -D -k 'now +2 days' -f imaging@expressimagingservices.com -S 'EIS FAX' -i '" . $file . "' -d " . $fax . " '" . $file . "'";
 
         $response = system($cmd);
 
         if(!is_dir('/faxtosend/submitted/' . $account)) {
-            @mkdir('/faxtosend/submitted/');
-            @mkdir('/faxtosend/submitted/' . $account);
-            @chmod('/faxtosend/submitted/' . $account, 0777);
+            @mkdir('/faxtosend/submitted/' . $account, 0777, true);
         }
 
         rename($file, '/faxtosend/submitted/' . $account . '/' . basename($file));

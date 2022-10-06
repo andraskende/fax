@@ -28,7 +28,7 @@ foreach ($files as $file) {
 
             $notification = '-D';
 
-            $cmdstring = "sendfax -m -n -t 5 -T 15 -P 63 " . $notification . " -k 'now + 2 day' -S 'faxweb' -i '" . $file . "' -f " . $email . " -d " . $fax . " " . $file;
+            $cmdstring = "sendfax -m -n -P 63 " . $notification . " -k 'now + 2 day' -S 'faxweb' -i '" . $file . "' -f " . $email . " -d " . $fax . " " . $file;
             echo $cmdstring;
 
             $response = system($cmdstring);

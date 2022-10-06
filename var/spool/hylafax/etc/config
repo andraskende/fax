@@ -4,7 +4,10 @@ AreaCode:               310
 LongDistancePrefix:     1
 InternationalPrefix:    011
 DialStringRules:        "etc/dialrules"
-ServerTracing:          0xFFF
+ServerTracing:          1
 MaxBatchJobs:           1
 MaxConcurrentCalls:     1
-ModemRate:              9600
+JobReqBusy:             1800
+JobReqNoAnswer:         1800
+JobRetryBusy:           10
+JobRetryNoAnswer:       2
