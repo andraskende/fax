@@ -25,6 +25,7 @@ UseJobTSI:              yes
 ModemType:              Class1
 Class1JBIGSupport:      no
 Class1ECMSupport:       no
+Class1RMQueryCmd: "!24,48,72,96"
 
 ModemResetCmds:         AT+VCID=1
 

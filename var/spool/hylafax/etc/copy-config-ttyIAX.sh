@@ -1,4 +1,3 @@
-
 cp config.ttyIAX1 config.ttyIAX2
 cp config.ttyIAX1 config.ttyIAX3
 cp config.ttyIAX1 config.ttyIAX4
