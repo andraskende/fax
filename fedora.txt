@@ -120,3 +120,5 @@ dmesg | grep tty
 ssh-keygen -R "hostname"
 
 
+
+Class1RMQueryCmd:       "!24,48,72,96"
