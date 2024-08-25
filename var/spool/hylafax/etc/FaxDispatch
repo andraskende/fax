@@ -7,8 +7,8 @@ NOW=$(date +"%Y%m%d-%H%M")
 
 SERVER=$(hostname -s)
 
-cp $FILE /fax/$NOW-$SERVER-$FILENAME.tif
-chmod 777 /fax/$NOW-$SERVER-$FILENAME.tif
+cp $FILE /public/$NOW-$SERVER-$FILENAME.tif
+chmod 777 /public/$NOW-$SERVER-$FILENAME.tif
 
-#cp $FILE /fax/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
-#chmod 777 /fax/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
+#cp $FILE /public/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
+#chmod 777 /public/$NOW-$SERVER-$CIDNAME-$FILENAME.tif
